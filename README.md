@@ -1,7 +1,7 @@
 ## eNoise Model
 eNoise Model is the data model for standardising the input/output data for noise simulations using CNOSSOS-EU in the EU.
 It is developed as an extension to the international 3D GIS standard [CityGML](http://www.opengeospatial.org/standards/citygml).
-It integrates concepts from the CNOSSOS-EU, the geluidregister, the INSPIRE, the Dutch IM Geluid and the existing CityGML Noise ADE.
+It integrates concepts from the CNOSSOS-EU, the geluidregister, the INSPIRE, Dutch IM Geluid and the existing CityGML Noise ADE.
 
 Things to know
 ---------------
@@ -17,7 +17,7 @@ CityGML has the concept of ADEs (Application Domain Extensions) to extend its sc
 Resources
 ---------------
 
-- The [UML model]((https://github.com/tudelft3d/eNoiseModel/blob/master/UML/CityGML_eNoise_ADE_v01.eap)) of the eNoise ADE was created using Enterprise Architect.
-- The [XML Schema file](https://github.com/tudelft3d/3D_Metadata_ADE/blob/master/XSD/CityGML_eNoise_ADE.xsd) of the eNoise ADE were derived automatically from the UML model using [ShapeChange](http://shapechange.net/).
+- The [UML model](https://github.com/tudelft3d/eNoiseModel/blob/master/DataModel/UML/CityGML_eNoise_ADE_v01.eap) of the eNoise ADE was created using Enterprise Architect.
+- The [XML Schema file](https://github.com/tudelft3d/eNoiseModel/blob/master/DataModel/XSD/CityGML_eNoiseADE.xsd) of the eNoise ADE were derived automatically from the UML model using [ShapeChange](http://shapechange.net/).
 - The input data used in the research is part of the project [Automated reconstruction of 3D input data for noise studies](https://3d.bk.tudelft.nl/projects/noise3d/) and is available [here]( https://3d.bk.tudelft.nl/opendata/noise3d/en.html).
--The data for the roads and the noise barriers is available at the [geluidregister](https://www.rijkswaterstaat.nl/kaarten/geluidregister.aspx).
+- The data for the roads and the noise barriers is available at the [geluidregister](https://www.rijkswaterstaat.nl/kaarten/geluidregister.aspx).
