@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bldg="http://www.opengis.net/citygml/building/2.0" xmlns:core="http://www.opengis.net/citygml/2.0" xmlns:dem="http://www.opengis.net/citygml/relief/2.0" xmlns:enoise="https://3d.bk.tudelft.nl/schemas/eNoise" xmlns:frn="http://www.opengis.net/citygml/cityfurniture/2.0" xmlns:gml="http://www.opengis.net/gml" xmlns:luse="http://www.opengis.net/citygml/landuse/2.0" xmlns:tran="http://www.opengis.net/citygml/transportation/2.0" elementFormDefault="qualified" targetNamespace="https://3d.bk.tudelft.nl/schemas/eNoise" version="0.1">
+  <import namespace="http://www.opengis.net/citygml/2.0" schemaLocation="http://schemas.opengis.net/citygml/2.0/cityGMLBase.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/building/2.0" schemaLocation="http://schemas.opengis.net/citygml/building/2.0/building.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/cityfurniture/2.0" schemaLocation="http://schemas.opengis.net/citygml/cityfurniture/2.0/cityFurniture.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/landuse/2.0" schemaLocation="http://schemas.opengis.net/citygml/landuse/2.0/landUse.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/relief/2.0" schemaLocation="http://schemas.opengis.net/citygml/relief/2.0/relief.xsd"/>
+  <import namespace="http://www.opengis.net/citygml/transportation/2.0" schemaLocation="http://schemas.opengis.net/citygml/transportation/2.0/transportation.xsd"/>
+  <import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <simpleType name="AbsorptionFractionValuesType">
+    <restriction base="string">
+      <enumeration value="0"/>
+      <enumeration value="0.5"/>
+      <enumeration value="1"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="BarrierTypeValuesType">
+    <restriction base="string">
+      <enumeration value="Screen"/>
+      <enumeration value="Sound wall"/>
+      <enumeration value="Other"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="BrakeTypeValuesType">
+    <restriction base="string">
+      <enumeration value="Cast iron block"/>
+      <enumeration value="Composite block"/>
+      <enumeration value="Sinter metal block"/>
+      <enumeration value="Non-tread brake"/>
+    </restriction>
+  </simpleType>
+  <element name="noiseCityFurniture" substitutionGroup="frn:_GenericApplicationPropertyOfCityFurniture" type="enoise:NoiseBarrierPropertyType"/>
+  <element name="refPoint" substitutionGroup="frn:_GenericApplicationPropertyOfCityFurniture" type="enoise:ReferencePointPropertyType"/>
+  <element name="adeVersion" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="adeAuthority" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="adeXMLschema" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="anyURI"/>
+  <element name="adeUML" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="anyURI"/>
+  <element name="dataAuthority" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="noiseAssessmentDate" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="date"/>
+  <element name="roadNoiseMethod" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="railwayNoiseMethod" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="industrialNoiseMethod" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="noiseSoftwareName" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="noiseSoftwareVersion" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="noiseSoftwareAuthority" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="documentation" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="anyURI"/>
+  <element name="adeName" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <element name="adeNamespace" substitutionGroup="core:_GenericApplicationPropertyOfCityModel" type="string"/>
+  <simpleType name="CurveTypeValuesType">
+    <restriction base="string">
+      <enumeration value="Straight"/>
+      <enumeration value="Low"/>
+      <enumeration value="Medium"/>
+      <enumeration value="High"/>
+    </restriction>
+  </simpleType>
+  <element name="Dwelling" substitutionGroup="core:_CityObject" type="enoise:DwellingType"/>
+  <complexType name="DwellingType">
+    <complexContent>
+      <extension base="core:AbstractCityObjectType">
+        <sequence>
+          <element name="dwellingID" type="string"/>
+          <element minOccurs="0" name="numberOfFloors" type="integer"/>
+          <element minOccurs="0" name="numberOfInhabitants" type="integer"/>
+          <element minOccurs="0" name="floorArea" type="double"/>
+          <element minOccurs="0" name="octaveBand" type="string"/>
+          <element minOccurs="0" name="dwellingLDenMax" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingLDenMin" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingLNightMax" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingLNightMin" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingLDenEq" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingLNightEq" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingL24Max" type="gml:MeasureType"/>
+          <element minOccurs="0" name="dwellingL24Min" type="gml:MeasureType"/>
+          <element minOccurs="0" name="numberOfReceivers" type="integer"/>
+          <element minOccurs="0" name="geometry" type="gml:MultiSurfacePropertyType"/>
+          <element name="dwellingAddress" type="core:AddressPropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="receiver" type="enoise:ReceiverPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="DwellingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:Dwelling"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="IndustrialNoiseSource" substitutionGroup="core:_CityObject" type="enoise:IndustrialNoiseSourceType"/>
+  <complexType name="IndustrialNoiseSourceType">
+    <complexContent>
+      <extension base="core:AbstractCityObjectType">
+        <sequence>
+          <element minOccurs="0" name="type" type="enoise:IndustrialSourceTypeType"/>
+          <element minOccurs="0" name="geometry" type="enoise:isPointOrLineOrSurfacePropertyType"/>
+          <element minOccurs="0" name="heightAboveGround" type="gml:MeasureType"/>
+          <element minOccurs="0" name="operatingHoursDay" type="double"/>
+          <element minOccurs="0" name="operatingHoursEvening" type="double"/>
+          <element minOccurs="0" name="operatingHoursNight" type="double"/>
+          <element minOccurs="0" name="octaveBandDay" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="octaveBandEvening" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="octaveBandNight" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="emissionDay" type="gml:MeasureType"/>
+          <element minOccurs="0" name="emissionEvening" type="gml:MeasureType"/>
+          <element minOccurs="0" name="emissionNight" type="gml:MeasureType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="refIndPoint" type="enoise:ReferencePointPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="IndustrialNoiseSourcePropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:IndustrialNoiseSource"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <simpleType name="IndustrialSourceTypeType">
+    <restriction base="string">
+      <enumeration value="point"/>
+      <enumeration value="line"/>
+      <enumeration value="surface"/>
+    </restriction>
+  </simpleType>
+  <element name="absorptionFraction" substitutionGroup="luse:_GenericApplicationPropertyOfLandUse" type="enoise:AbsorptionFractionValuesType"/>
+  <element name="LineRelief" substitutionGroup="dem:_ReliefComponent" type="enoise:LineReliefType"/>
+  <complexType name="LineReliefType">
+    <complexContent>
+      <extension base="dem:AbstractReliefComponentType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="line" type="gml:MultiCurvePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LineReliefPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:LineRelief"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="NoiseBarrier" substitutionGroup="core:_CityObject" type="enoise:NoiseBarrierType"/>
+  <complexType name="NoiseBarrierType">
+    <complexContent>
+      <extension base="core:AbstractCityObjectType">
+        <sequence>
+          <element minOccurs="0" name="barrierType" type="enoise:BarrierTypeValuesType"/>
+          <element minOccurs="0" name="barrierLength" type="gml:MeasureType"/>
+          <element minOccurs="0" name="refFactorR" type="enoise:ReflectionFactorPropertyType"/>
+          <element minOccurs="0" name="floating" type="boolean"/>
+          <element minOccurs="0" name="lod1MultiSurface" type="gml:MultiSurfacePropertyType"/>
+          <element minOccurs="0" name="lod0BaseLine" type="gml:CurvePropertyType"/>
+          <element minOccurs="0" name="lod0TopLine" type="gml:CurvePropertyType"/>
+          <element minOccurs="0" name="refFactorL">
+            <complexType>
+              <sequence>
+                <element ref="enoise:ReflectionFactor"/>
+              </sequence>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="barrierHeight" type="gml:LengthType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NoiseBarrierPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:NoiseBarrier"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <simpleType name="NoiseMeasureValuesType">
+    <restriction base="string">
+      <enumeration value="Rail damper"/>
+      <enumeration value="Low barrier"/>
+      <enumeration value="Absorber plate"/>
+      <enumeration value="Embedded rail"/>
+      <enumeration value="Other"/>
+    </restriction>
+  </simpleType>
+  <element name="NoiseRailwaySegment" substitutionGroup="core:_CityObject" type="enoise:NoiseRailwaySegmentType"/>
+  <complexType name="NoiseRailwaySegmentType">
+    <complexContent>
+      <extension base="core:AbstractCityObjectType">
+        <sequence>
+          <element minOccurs="0" name="railRoughness" type="enoise:RailRoughnessValuesType"/>
+          <element minOccurs="0" name="railRoughnessValue" type="gml:MeasureType"/>
+          <element minOccurs="0" name="railpadStiffness" type="enoise:RailpadStiffnessValuesType"/>
+          <element minOccurs="0" name="railpadStiffnessValue" type="gml:MeasureType"/>
+          <element minOccurs="0" name="trackBase" type="enoise:TrackBaseValuesType"/>
+          <element minOccurs="0" name="switchLength" type="gml:LengthType"/>
+          <element minOccurs="0" name="curveType" type="enoise:CurveTypeValuesType"/>
+          <element minOccurs="0" name="noiseMeasure" type="enoise:NoiseMeasureValuesType"/>
+          <element minOccurs="0" name="railJoints" type="enoise:RailJointsValuesType"/>
+          <element minOccurs="0" name="trackDecayRate" type="gml:MeasureType"/>
+          <element minOccurs="0" name="tunnel" type="boolean"/>
+          <element minOccurs="0" name="mDay" type="enoise:TrafficFlowPropertyType"/>
+          <element minOccurs="0" name="mEvening" type="enoise:TrafficFlowPropertyType"/>
+          <element minOccurs="0" name="mNight" type="enoise:TrafficFlowPropertyType"/>
+          <element minOccurs="0" name="octaveBandDay" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="octaveBandEvening" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="octaveBandNight" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="emissionDay" type="gml:MeasureType"/>
+          <element minOccurs="0" name="emissionEvening" type="gml:MeasureType"/>
+          <element minOccurs="0" name="emissionNight" type="gml:MeasureType"/>
+          <element minOccurs="0" name="railwaySurfaceMaterial" type="string"/>
+          <element minOccurs="0" name="railwafSurfaceCorrection" type="gml:MeasureType"/>
+          <element minOccurs="0" name="bridge" type="boolean"/>
+          <element minOccurs="0" name="crossing" type="boolean"/>
+          <element minOccurs="0" name="curveRadius" type="gml:LengthType"/>
+          <element minOccurs="0" name="additionalCorrectionSegment" type="gml:MeasureType"/>
+          <element minOccurs="0" name="lod0BaseLine" type="gml:CurvePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="usedBy" type="enoise:TrainPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NoiseRailwaySegmentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:NoiseRailwaySegment"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="NoiseRoadSegment" substitutionGroup="core:_CityObject" type="enoise:NoiseRoadSegmentType"/>
+  <complexType name="NoiseRoadSegmentType">
+    <complexContent>
+      <extension base="core:AbstractCityObjectType">
+        <sequence>
+          <element minOccurs="0" name="sourceHeight" type="gml:LengthType"/>
+          <element minOccurs="0" name="ageOfRoad" type="integer"/>
+          <element minOccurs="0" name="crossing" type="boolean"/>
+          <element minOccurs="0" name="roundabout" type="boolean"/>
+          <element minOccurs="0" name="octaveBandDay" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="octaveBandEvening" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="octaveBandNight" type="enoise:OctaveBandType"/>
+          <element minOccurs="0" name="emissionDay" type="gml:MeasureType"/>
+          <element minOccurs="0" name="emissionEvening" type="gml:MeasureType"/>
+          <element minOccurs="0" name="emissionNight" type="gml:MeasureType"/>
+          <element minOccurs="0" name="mDay" type="enoise:TrafficFlowPropertyType"/>
+          <element minOccurs="0" name="mEvening" type="enoise:TrafficFlowPropertyType"/>
+          <element minOccurs="0" name="mNight" type="enoise:TrafficFlowPropertyType"/>
+          <element minOccurs="0" name="speedDay" type="enoise:SpeedOfVehiclesPropertyType"/>
+          <element minOccurs="0" name="speedNight" type="enoise:SpeedOfVehiclesPropertyType"/>
+          <element minOccurs="0" name="speedEvening" type="enoise:SpeedOfVehiclesPropertyType"/>
+          <element minOccurs="0" name="roadSurfaceMaterial" type="string"/>
+          <element minOccurs="0" name="roadSurfaceCorrection" type="gml:MeasureType"/>
+          <element minOccurs="0" name="roadWidth" type="gml:LengthType"/>
+          <element minOccurs="0" name="distanceD" type="gml:LengthType"/>
+          <element minOccurs="0" name="bridge" type="boolean"/>
+          <element minOccurs="0" name="tunnel" type="boolean"/>
+          <element minOccurs="0" name="roadGradientPercent" type="gml:MeasureType"/>
+          <element minOccurs="0" name="lod0BaseLine" type="gml:CurvePropertyType"/>
+          <element minOccurs="0" name="lineage" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="NoiseRoadSegmentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:NoiseRoadSegment"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <simpleType name="OctaveBandType">
+    <restriction base="string">
+      <enumeration value="63Hz"/>
+      <enumeration value="125Hz"/>
+      <enumeration value="250Hz"/>
+      <enumeration value="500Hz"/>
+      <enumeration value="1kHz"/>
+      <enumeration value="2kHz"/>
+      <enumeration value="4kHz"/>
+      <enumeration value="8kHz"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="RailJointsValuesType">
+    <restriction base="string">
+      <enumeration value="JointlessRail"/>
+      <enumeration value="Single joint or switch"/>
+      <enumeration value="Two joints or switches per 100m"/>
+      <enumeration value="More than two joints or switches per 100m"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="RailRoughnessValuesType">
+    <restriction base="string">
+      <enumeration value="Well maintained and very smooth"/>
+      <enumeration value="Normally maintained"/>
+      <enumeration value="Not well maintained"/>
+      <enumeration value="Bad condition"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="RailpadStiffnessValuesType">
+    <restriction base="string">
+      <enumeration value="Soft"/>
+      <enumeration value="Medium"/>
+      <enumeration value="Hard"/>
+    </restriction>
+  </simpleType>
+  <element name="noiseRailwaySegmentProperty" substitutionGroup="tran:_GenericApplicationPropertyOfRailway" type="enoise:NoiseRailwaySegmentPropertyType"/>
+  <element name="Receiver" substitutionGroup="gml:_Feature" type="enoise:ReceiverType"/>
+  <complexType name="ReceiverType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="receiverID" type="string"/>
+          <element name="receiverFacade" type="gml:ReferenceType"/>
+          <element name="receiverLocation" type="gml:PointType"/>
+          <element name="receiverHeight" type="double"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ReceiverPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:Receiver"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="ReferencePoint" substitutionGroup="gml:_Feature" type="enoise:ReferencePointType"/>
+  <complexType name="ReferencePointType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="geometry" type="gml:PointType"/>
+          <element minOccurs="0" name="heightAboveGround" type="gml:MeasureType"/>
+          <element minOccurs="0" name="noiseValue" type="gml:MeasureType"/>
+          <element minOccurs="0" name="maxNoiseValue" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ReferencePointPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:ReferencePoint"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="ReflectionFactor" substitutionGroup="gml:_GML" type="enoise:ReflectionFactorType"/>
+  <complexType name="ReflectionFactorType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element minOccurs="0" name="rf63Hz" type="double"/>
+          <element minOccurs="0" name="rf125Hz" type="double"/>
+          <element minOccurs="0" name="rf250Hz" type="double"/>
+          <element minOccurs="0" name="rf500Hz" type="double"/>
+          <element minOccurs="0" name="rf1kHz" type="double"/>
+          <element minOccurs="0" name="rf2kHz" type="double"/>
+          <element minOccurs="0" name="rf4kHz" type="double"/>
+          <element minOccurs="0" name="rf8kHz" type="double"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ReflectionFactorPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:ReflectionFactor"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="noiseRoadSegmentProperty" substitutionGroup="tran:_GenericApplicationPropertyOfRoad" type="enoise:NoiseRoadSegmentPropertyType"/>
+  <element name="SpeedOfVehicles" substitutionGroup="gml:_Feature" type="enoise:SpeedOfVehiclesType"/>
+  <complexType name="SpeedOfVehiclesType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="lightMotor" type="gml:MeasureType"/>
+          <element minOccurs="0" name="mediumHeavyMotor" type="gml:MeasureType"/>
+          <element minOccurs="0" name="heavyMotor" type="gml:MeasureType"/>
+          <element minOccurs="0" name="p2wMotorcycles" type="gml:MeasureType"/>
+          <element minOccurs="0" name="p2wMoped" type="gml:MeasureType"/>
+          <element minOccurs="0" name="electricMotor" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SpeedOfVehiclesPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:SpeedOfVehicles"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <simpleType name="TrackBaseValuesType">
+    <restriction base="string">
+      <enumeration value="Ballast bed with concrete sleepers"/>
+      <enumeration value="Ballast bed with wooden sleepers"/>
+      <enumeration value="Ballast bed with non welded tracks"/>
+      <enumeration value="Concrete blocks"/>
+      <enumeration value="Concrete blocks with ballast bed"/>
+      <enumeration value="Adjustable railfasteners"/>
+      <enumeration value="Adjustable railfasteners with ballast bed"/>
+      <enumeration value="Embedded rail"/>
+      <enumeration value="Direct rail on concrete for light rail"/>
+      <enumeration value="Rail dampeners with concrete sleepers"/>
+      <enumeration value="Rail with  Rhedatrack"/>
+      <enumeration value="Rail with Rhedatrack with dampers"/>
+      <enumeration value="Tram: Ballast"/>
+      <enumeration value="Tram:Grass"/>
+      <enumeration value="Tram:Asphalt"/>
+      <enumeration value="Tram: Tramway plates"/>
+      <enumeration value="Tram: Cobble stones"/>
+    </restriction>
+  </simpleType>
+  <element name="TrafficFlow" substitutionGroup="gml:_Feature" type="enoise:TrafficFlowType"/>
+  <complexType name="TrafficFlowType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="totalFlow" type="gml:MeasureType"/>
+          <element minOccurs="0" name="lightMotor" type="gml:MeasureType"/>
+          <element minOccurs="0" name="mediumHeavyMotor" type="gml:MeasureType"/>
+          <element minOccurs="0" name="heavyMotor" type="gml:MeasureType"/>
+          <element minOccurs="0" name="p2wMotorcycles" type="gml:MeasureType"/>
+          <element minOccurs="0" name="p2wMoped" type="gml:MeasureType"/>
+          <element minOccurs="0" name="electricMotor" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TrafficFlowPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:TrafficFlow"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <element name="Train" substitutionGroup="gml:_Feature" type="enoise:TrainType"/>
+  <complexType name="TrainType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="brakeType" type="string"/>
+          <element minOccurs="0" name="dampers" type="boolean"/>
+          <element minOccurs="0" name="screens" type="boolean"/>
+          <element minOccurs="0" name="trainType" type="string"/>
+          <element minOccurs="0" name="trainTypeCorrection" type="gml:MeasureType"/>
+          <element minOccurs="0" name="lengthDay" type="gml:LengthType"/>
+          <element minOccurs="0" name="lengthEvening" type="gml:LengthType"/>
+          <element minOccurs="0" name="lengthNight" type="gml:LengthType"/>
+          <element minOccurs="0" name="speedDay" type="gml:SpeedType"/>
+          <element minOccurs="0" name="speedEvening" type="gml:SpeedType"/>
+          <element minOccurs="0" name="speedNight" type="gml:SpeedType"/>
+          <element minOccurs="0" name="additionalCorrectionTrain" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TrainPropertyType">
+    <sequence minOccurs="0">
+      <element ref="enoise:Train"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  </complexType>
+  <simpleType name="TrainTypeValuesType">
+    <restriction base="string">
+      <enumeration value="High speed train"/>
+      <enumeration value="Metro"/>
+      <enumeration value="Tram"/>
+    </restriction>
+  </simpleType>
+  <element name="octaveBandDay" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="enoise:OctaveBandType"/>
+  <element name="octaveBandEvening" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="enoise:OctaveBandType"/>
+  <element name="octaveBandNight" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="enoise:OctaveBandType"/>
+  <element name="buildingL24Max" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingL24Min" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="mostExposedFacade" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:ReferenceType"/>
+  <element name="quietFacade" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:ReferenceType"/>
+  <element name="baseArea" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="double"/>
+  <element name="volume" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="double"/>
+  <element name="groundHeight" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:LengthType"/>
+  <element name="numberOfReceivers" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="integer"/>
+  <element name="numberOfDwellings" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="integer"/>
+  <element name="dwelling" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="enoise:DwellingPropertyType"/>
+  <element name="receiver" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="enoise:ReceiverPropertyType"/>
+  <element name="buildingReflection" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="string"/>
+  <element name="buildingReflectionCorrection" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingLDenMax" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingLDenMin" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingLNightMax" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingLNightMin" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingLDenEq" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingLNightEq" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="gml:MeasureType"/>
+  <element name="buildingHabitants" substitutionGroup="bldg:_GenericApplicationPropertyOfAbstractBuilding" type="integer"/>
+  <element name="isPointOrLineOrSurface" substitutionGroup="gml:_Object" type="enoise:isPointOrLineOrSurfaceType"/>
+  <complexType name="isPointOrLineOrSurfaceType">
+    <choice>
+      <element minOccurs="0" name="point" type="gml:PointType"/>
+      <element minOccurs="0" name="line">
+        <complexType>
+          <sequence minOccurs="0">
+            <element ref="gml:LineStringSegment"/>
+          </sequence>
+          <attributeGroup ref="gml:AssociationAttributeGroup"/>
+        </complexType>
+      </element>
+      <element minOccurs="0" name="surface" type="gml:SurfacePropertyType"/>
+    </choice>
+  </complexType>
+  <complexType name="isPointOrLineOrSurfacePropertyType">
+    <sequence>
+      <element ref="enoise:isPointOrLineOrSurface"/>
+    </sequence>
+  </complexType>
+</schema>
